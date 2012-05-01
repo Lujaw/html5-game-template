@@ -4,6 +4,10 @@
 define(function (require) {
     'use strict';
 
+    var configVars = {
+      voloTestCommand: "qunit"      
+    };
+
     var amdify = require('amdify'),
         q = require('q'),
         crypto = require('crypto'),
@@ -284,18 +288,20 @@ define(function (require) {
 
         test: function (d, v, namedArgs) {
 
-          console.error("test invoked");
+          // XXX should take and handle arguments
 
-          function callback() {
-            console.log("tests invoked");
+
+          function callback(error, result) {
+            // XXX should figure out the right thing to do here
           }
 
+          // XXX should figure out why we need the node_modules
+          // done by hand
           var testrunner = require("./node_modules/qunit/index");
           testrunner.run({
-            code: "test/dummy-module.js",
-            tests: "test/template-infrastructure.js"
+            code: "./test/dummy-module.js",
+            tests: "./test/template-infrastructure.js"
           }, callback);
-
 
         },
         
