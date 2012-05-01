@@ -282,6 +282,23 @@ define(function (require) {
             .fail(d.reject);
         },
 
+        test: function (d, v, namedArgs) {
+
+          console.error("test invoked");
+
+          function callback() {
+            console.log("tests invoked");
+          }
+
+          var testrunner = require("./node_modules/qunit/index");
+          testrunner.run({
+            code: "test/dummy-module.js",
+            tests: "test/template-infrastructure.js"
+          }, callback);
+
+
+        },
+        
         appcache: function (d, v, namedArgs) {
             var hasBuilt = v.exists('www-built');
 
