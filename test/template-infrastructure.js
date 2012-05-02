@@ -4,10 +4,13 @@ QUnit.module("volo test");
 
 // figure out default options for node-qunit
 
-// TD running "volo test" executes qunit by default
-test('test that setting voloTestCommand to ', function() {
-  ok(dummyFunction);
+var v = require('volo');
+
+test('executing "volo test" runs qunit on test/template-infrastructure.js', 
+  function() {
+    ok(v.test(), "v.test() executed without exploding");
 });
+
 
 //TD setting voloTestCommand to something else executes that
 
